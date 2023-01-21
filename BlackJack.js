@@ -102,6 +102,8 @@ let dealer = new Player('Dealer', true);
 
 let deck1 = new Deck;
 
+let message = document.querySelector('.displayMessage');
+
 deck1.fillDeck();
 
 deck1.shuffleDeck();
@@ -128,10 +130,10 @@ hit.addEventListener('click', hitMe());
 if (player1.sum > dealer.sum) {
     hitMe();
 } else if (player1.sum = dealer.sum) { 
-    //return message 'It's a tie!' 
+    message.innerHTML = 'Its a tie!' ;
 }
 else {
-    //return message 'Dealer Wins!'
+    message.innerHTML = 'Dealer Wins!'
 }
 
 
