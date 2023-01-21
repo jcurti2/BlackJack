@@ -32,7 +32,7 @@ cardValue() {
 class Player{
     constructor(player,dealer){
         this.name = player;
-        this.hand = [];
+        this.hand = [];``
         this.sum = 0
         this.dealer = dealer
     }
@@ -58,7 +58,7 @@ class Deck{
         {
             for(let j = 1; j<= 4; j++){
                let temp = new Card(j, i)
-               console.log(temp.cardValue());
+            //    console.log(temp.cardValue());
                this.cards.push(temp);
             }
         }
@@ -66,32 +66,92 @@ class Deck{
     }
     shuffleDeck(){
         this.cards.sort(() => Math.random() - 0.5)
-        console.log(this.cards);
+        // console.log(this.cards);
     }   
     dealCard(){
-//pop 
+ 
       return this.cards.pop();
 
     }
 
 }
-let player1 = new Player('Player1');
+function hitMe(){
+    playerTurn().addCardToHand(deck1.dealCard());
+    if(playerTurn().sum > 21){
+        playerMessage = `${playerTurn()} bust!` 
+        playerTurn().sum = handValue    
+    }
+}
 
-let dealer = new Player('Dealer');
+function playerTurn(){
+    if (player.dealer == false){
+        return player1;
+    }else {
+        return dealer;
+    }
+}
+const hold = document.querySelector('#pass');
 
-// let joker = new Card(1, 6);
-// let joker2 = new Card(3, 11
-//     )
+const hit = document.querySelector('#addCard'); 
+
+let player1 = new Player('Player1', false);
+
+let handValue = 0;
+
+let dealer = new Player('Dealer', true);
+
 let deck1 = new Deck;
 
 deck1.fillDeck();
 
 deck1.shuffleDeck();
-deck1.shuffleDeck();
 
+player1.addCardToHand(deck1.dealCard());
+
+player1.addCardToHand(deck1.dealCard());
+// console.log(player1.sum);
+// console.log(player1.hand);
+dealer.addCardToHand(deck1.dealCard());
+
+dealer.addCardToHand(deck1.dealCard());
+// console.log(dealer.sum);
+// console.log((dealer.hand));
+
+//Need to determine who is first
+
+
+hit.addEventListener('click', hitMe());
+
+//hold.addEventListener('click', passtodealer);
+
+//Dealer turn compare hand values, if less than player sum then add card. Then sum the value add another card. 
+if (player1.sum > dealer.sum) {
+    hitMe();
+} else if (player1.sum = dealer.sum) { 
+    //return message 'It's a tie!' 
+}
+else {
+    //return message 'Dealer Wins!'
+}
+
+
+
+
+
+
+
+
+
+
+// let joker = new Card(1, 6);
+// let joker2 = new Card(3, 11
+//     )
+
+
+
+// deck1.shuffleDeck();
 // console.log(deck1.cards);
 // player1.handValue()
-player1.addCardToHand(deck1.dealCard());
-player1.addCardToHand(deck1.dealCard());
-console.log(player1.sum);
-console.log(player1.hand);
+
+// console.log(player1.sum);
+// console.log(player1.hand);
