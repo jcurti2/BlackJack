@@ -75,28 +75,22 @@ class Deck{
     }
 
 }
+
 function hitMe(){
-    playerTurn().addCardToHand(deck1.dealCard());
+    playerTurn().addCardToHand(deck1.dealCard())
     if(playerTurn().sum > 21){
-        playerMessage = `${playerTurn()} bust!` 
-        playerTurn().sum = handValue    
+        playerMessage = `${playerTurn()} bust!`     
+        return playerTurn().sum
+    } else {
+        return playerTurn().sum
     }
 }
 
-function playerTurn(){
-    if (player.dealer == false){
-        return player1;
-    }else {
-        return dealer;
-    }
-}
 const hold = document.querySelector('#pass');
 
-const hit = document.querySelector('#addCard'); 
+const hit = document.getElementById('addCard'); 
 
 let player1 = new Player('Player1', false);
-
-let handValue = 0;
 
 let dealer = new Player('Dealer', true);
 
@@ -119,24 +113,26 @@ dealer.addCardToHand(deck1.dealCard());
 // console.log(dealer.sum);
 // console.log((dealer.hand));
 
-//Need to determine who is first
+hit.addEventListener('click', () => hitMe() );
+// ;console.log('hit')
 
-
-hit.addEventListener('click', hitMe());
-
-//hold.addEventListener('click', passtodealer);
-
-//Dealer turn compare hand values, if less than player sum then add card. Then sum the value add another card. 
-if (player1.sum > dealer.sum) {
-    hitMe();
-} else if (player1.sum = dealer.sum) { 
+hold.addEventListener('click', () => 
+{
+// Dealer's turn 
+    while (player1.sum > dealer.sum){
+        hitMe();
+    }
+    if (player1.sum = dealer.sum) { 
     message.innerHTML = 'Its a tie!' ;
-}
-else {
+    }
+    else if (dealer.sum > player.sum && dealer.sum <= 21) {
     message.innerHTML = 'Dealer Wins!'
-}
-
-
+    }
+    else {
+    message.innerHTML = `${player1} wins!`
+    }
+} 
+);
 
 
 
