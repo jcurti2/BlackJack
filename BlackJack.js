@@ -95,12 +95,12 @@ function hitMe(){
     if(player1.sum > 21){
         playerMessage = `${player1.name} bust! Dealer wins!`     
         // return player1.sum
-        console.log(player1.sum);
-        console.log(playerMessage);
+        // console.log(player1.sum);
+        // console.log(playerMessage);
         endGame();
     } else {
         // return player1.sum
-        console.log(player1.sum);
+        // console.log(player1.sum);
     }
 }
 
@@ -134,35 +134,38 @@ dealer.addCardToHand(deck1.dealCard());
 
 dealer.addCardToHand(deck1.dealCard());
 if(dealer.sum == 21){
-    console.log('Dealer wins!')
+    message.innerHTML = 'Dealer Wins!'
+    // console.log('Dealer wins!')
 }
-console.log(dealer.sum);
-console.log((dealer.hand));
+// console.log(dealer.sum);
+// console.log((dealer.hand));
 
 hit.addEventListener('click', () => hitMe());
-console.log(player1.sum)
-console.log(player1.hand);
+// console.log(player1.sum)
+// console.log(player1.hand);
 
 hold.addEventListener('click', () => 
 {
 // Dealer's turn 
     while (player1.sum > dealer.sum){ 
-        dealer.addCardToHand(deck1.dealCard()); console.log(player1.sum); console.log(dealer.sum);
+        dealer.addCardToHand(deck1.dealCard()); 
+        // console.log(player1.sum); console.log(dealer.sum);
     }
     if (player1.sum == dealer.sum) { 
-    // message.innerHTML = 
-    console.log('Its a tie!');
-    console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
+    message.innerHTML = 'Its a tie!'
+    // console.log('Its a tie!');
+    // console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
     endGame()
     }
     else if (dealer.sum > player1.sum && dealer.sum <= 21) {
-    // message.innerHTML = 
-    console.log('Dealer Wins!'); console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
+    message.innerHTML = 'Dealer Wins!'
+    // console.log('Dealer Wins!'); console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
     endGame()
     }
     else {
-    // message.innerHTML = 
-    console.log(`${player1.name} wins! Dealer bust!`); console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
+    message.innerHTML = `${player1.name} wins! Dealer bust!`
+    // console.log(`${player1.name} wins! Dealer bust!`); 
+    // console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
     endGame()
     }
 } 
@@ -184,7 +187,8 @@ playAgain.addEventListener('click', () => {
     dealer.hand = [];
     player1.sum = 0;
     dealer.sum = 0;
-        if (deck1.cards.length < 20){deck1.fillDeck(); deck1.shuffleDeck(); console.log(deck1.cards)
+        if (deck1.cards.length < 20){deck1.fillDeck(); deck1.shuffleDeck(); 
+            // console.log(deck1.cards)
             player1.addCardToHand(deck1.dealCard());
             player1.addCardToHand(deck1.dealCard());
     
@@ -196,7 +200,7 @@ playAgain.addEventListener('click', () => {
     
             dealer.addCardToHand(deck1.dealCard());
             dealer.addCardToHand(deck1.dealCard());
-            console.log(player1.sum); console.log(dealer.sum); console.log(player1.hand); console.log(dealer.hand);
+            // console.log(player1.sum); console.log(dealer.sum); console.log(player1.hand); console.log(dealer.hand);
         }
     }
 )
