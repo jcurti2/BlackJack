@@ -82,7 +82,7 @@ function endGame(){
      toggleHitHold('none');
      togglePlayAgain('');
      message.innerHTML = 'Play again?';
-     console.log(message);
+     
 }
 
 
@@ -125,11 +125,17 @@ deck1.shuffleDeck();
 player1.addCardToHand(deck1.dealCard());
 
 player1.addCardToHand(deck1.dealCard());
+if(player1.sum == 21){
+    console.log(`${player1} wins!`)
+};
 console.log(player1.sum);
 console.log(player1.hand);
 dealer.addCardToHand(deck1.dealCard());
 
 dealer.addCardToHand(deck1.dealCard());
+if(dealer.sum == 21){
+    console.log('Dealer wins!')
+}
 console.log(dealer.sum);
 console.log((dealer.hand));
 
@@ -174,11 +180,26 @@ playAgain.addEventListener('click', () => {
     toggleHitHold('');
     togglePlayAgain('none');
     message.innerHTML = `Let's see if ${player1.name} can win this time!`
-
-    //remove cards (do not reshuffle deck)
-
-    //if (deck1.cards.length < 20){deck1.fillDeck(); deck1.shuffleDeck();}
-})
+    player1.hand = [];
+    dealer.hand = [];
+    player1.sum = 0;
+    dealer.sum = 0;
+        if (deck1.cards.length < 20){deck1.fillDeck(); deck1.shuffleDeck(); console.log(deck1.cards)
+            player1.addCardToHand(deck1.dealCard());
+            player1.addCardToHand(deck1.dealCard());
+    
+            dealer.addCardToHand(deck1.dealCard());
+            dealer.addCardToHand(deck1.dealCard());
+    } else{
+            player1.addCardToHand(deck1.dealCard());
+            player1.addCardToHand(deck1.dealCard());
+    
+            dealer.addCardToHand(deck1.dealCard());
+            dealer.addCardToHand(deck1.dealCard());
+            console.log(player1.sum); console.log(dealer.sum); console.log(player1.hand); console.log(dealer.hand);
+        }
+    }
+)
 
 
 
