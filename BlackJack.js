@@ -75,14 +75,22 @@ class Deck{
     }
 
 }
+// function endGame(){
+//     //disable buttons
+//     //show player hands and scores
+// }
 
 function hitMe(){
-    playerTurn().addCardToHand(deck1.dealCard())
-    if(playerTurn().sum > 21){
-        playerMessage = `${playerTurn()} bust!`     
-        return playerTurn().sum
+    player1.addCardToHand(deck1.dealCard())
+    if(player1.sum > 21){
+        playerMessage = `${player1} bust!`     
+        // return player1.sum
+        console.log(player1.sum);
+        console.log(playerMessage);
+        // endGame();
     } else {
-        return playerTurn().sum
+        // return player1.sum
+        console.log(player1.sum);
     }
 }
 
@@ -105,31 +113,40 @@ deck1.shuffleDeck();
 player1.addCardToHand(deck1.dealCard());
 
 player1.addCardToHand(deck1.dealCard());
-// console.log(player1.sum);
-// console.log(player1.hand);
+console.log(player1.sum);
+console.log(player1.hand);
 dealer.addCardToHand(deck1.dealCard());
 
 dealer.addCardToHand(deck1.dealCard());
-// console.log(dealer.sum);
-// console.log((dealer.hand));
+console.log(dealer.sum);
+console.log((dealer.hand));
 
-hit.addEventListener('click', () => hitMe() );
+hit.addEventListener('click', () => hitMe());
+console.log(player1.sum)
+console.log(player1.hand);
 // ;console.log('hit')
 
 hold.addEventListener('click', () => 
 {
 // Dealer's turn 
-    while (player1.sum > dealer.sum){
-        hitMe();
+    while (player1.sum > dealer.sum){ 
+        dealer.addCardToHand(deck1.dealCard()); console.log(player1.sum); console.log(dealer.sum);
     }
-    if (player1.sum = dealer.sum) { 
-    message.innerHTML = 'Its a tie!' ;
+    if (player1.sum == dealer.sum && dealer.sum >= 16) { 
+    // message.innerHTML = 
+    console.log('Its a tie!');
+    console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
+    // endGame()
     }
-    else if (dealer.sum > player.sum && dealer.sum <= 21) {
-    message.innerHTML = 'Dealer Wins!'
+    else if (dealer.sum > player1.sum && dealer.sum <= 21) {
+    // message.innerHTML = 
+    console.log('Dealer Wins!'); console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
+    // endGame()
     }
     else {
-    message.innerHTML = `${player1} wins!`
+    // message.innerHTML = 
+    console.log(`${player1} wins!`); console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
+    // endGame()
     }
 } 
 );
