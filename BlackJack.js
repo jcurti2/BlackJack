@@ -3,7 +3,7 @@ class Card{
     this.suitId = suitId;
     this.id= id;
 }
-cardValue() {
+    cardValue() {
     if (this.id == 1){
         return 'A';
     } else if (this.id == 11){
@@ -32,8 +32,8 @@ cardValue() {
 class Player{
     constructor(player,dealer){
         this.name = player;
-        this.hand = [];``
-        this.sum = 0
+        this.hand = [];
+        this.sum = 0;
         this.dealer = dealer
     }
     addCardToHand(card){
@@ -75,19 +75,29 @@ class Deck{
     }
 
 }
-// function endGame(){
-//     //disable buttons
-//     //show player hands and scores
-// }
+
+
+
+function endGame(){
+     toggleHitHold('none');
+     togglePlayAgain('');
+     message.innerHTML = 'Play again?';
+     console.log(message);
+}
+
+
+
+
+
 
 function hitMe(){
     player1.addCardToHand(deck1.dealCard())
     if(player1.sum > 21){
-        playerMessage = `${player1} bust!`     
+        playerMessage = `${player1.name} bust! Dealer wins!`     
         // return player1.sum
         console.log(player1.sum);
         console.log(playerMessage);
-        // endGame();
+        endGame();
     } else {
         // return player1.sum
         console.log(player1.sum);
@@ -97,6 +107,8 @@ function hitMe(){
 const hold = document.querySelector('#pass');
 
 const hit = document.getElementById('addCard'); 
+
+const playAgain = document.querySelector('#newDeal');
 
 let player1 = new Player('Player1', false);
 
@@ -124,7 +136,6 @@ console.log((dealer.hand));
 hit.addEventListener('click', () => hitMe());
 console.log(player1.sum)
 console.log(player1.hand);
-// ;console.log('hit')
 
 hold.addEventListener('click', () => 
 {
@@ -132,29 +143,42 @@ hold.addEventListener('click', () =>
     while (player1.sum > dealer.sum){ 
         dealer.addCardToHand(deck1.dealCard()); console.log(player1.sum); console.log(dealer.sum);
     }
-    if (player1.sum == dealer.sum && dealer.sum >= 16) { 
+    if (player1.sum == dealer.sum) { 
     // message.innerHTML = 
     console.log('Its a tie!');
     console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
-    // endGame()
+    endGame()
     }
     else if (dealer.sum > player1.sum && dealer.sum <= 21) {
     // message.innerHTML = 
     console.log('Dealer Wins!'); console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
-    // endGame()
+    endGame()
     }
     else {
     // message.innerHTML = 
-    console.log(`${player1} wins!`); console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
-    // endGame()
+    console.log(`${player1.name} wins! Dealer bust!`); console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
+    endGame()
     }
 } 
 );
 
+//this function allows me to pass in '' to enable or none to disable the boxes ability to be clicked
+function toggleHitHold(value){
+    document.getElementById('addCard').style.pointerEvents = value;
+    document.getElementById('pass').style.pointerEvents = value;
+}
+function togglePlayAgain(val){
+    document.getElementById('newDeal').style.pointerEvents = val;
+}
+playAgain.addEventListener('click', () => {
+    toggleHitHold('');
+    togglePlayAgain('none');
+    message.innerHTML = `Let's see if ${player1.name} can win this time!`
 
+    //remove cards (do not reshuffle deck)
 
-
-
+    //if (deck1.cards.length < 20){deck1.fillDeck(); deck1.shuffleDeck();}
+})
 
 
 
