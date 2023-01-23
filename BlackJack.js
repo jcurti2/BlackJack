@@ -58,7 +58,6 @@ class Deck{
         {
             for(let j = 1; j<= 4; j++){
                let temp = new Card(j, i)
-            //    console.log(temp.cardValue());
                this.cards.push(temp);
             }
         }
@@ -66,7 +65,6 @@ class Deck{
     }
     shuffleDeck(){
         this.cards.sort(() => Math.random() - 0.5)
-        // console.log(this.cards);
     }   
     dealCard(){
  
@@ -85,19 +83,30 @@ function drawCard(myCard, cardHolder){
     let whosCard = document.getElementById(cardHolder);
     whosCard.append(copy);
 }
+function startGame(){
+    deck1.fillDeck();
+    deck1.shuffleDeck();
+    let myCard1 = deck1.dealCard()
+    player1.addCardToHand(myCard1);
+    drawCard(myCard1, 'playerCards');
+    let myCard2 = deck1.dealCard()
+    player1.addCardToHand(myCard2);
+    drawCard(myCard2, 'playerCards');
+    document.getElementById('player').innerHTML = player1.sum;
+    let myCard3 = deck1.dealCard()
+    dealer.addCardToHand(myCard3);
+    drawCard(myCard3, 'dealerCards');
+    let myCard4 = deck1.dealCard()
+    dealer.addCardToHand(myCard4);
+    drawCard(myCard4, 'dealerCards');
 
-
+}
 function endGame(){
      toggleHitHold('none');
      togglePlayAgain('');
      message.innerHTML = 'Play again?';
      
 }
-
-
-
-
-
 
 function hitMe(){
     let myCard = deck1.dealCard()
@@ -107,15 +116,12 @@ function hitMe(){
         winLose.innerHTML = `${player1.name} bust! Dealer wins!`
         document.getElementById('dealr').innerHTML = dealer.sum; 
         document.getElementById('player').innerHTML = player1.sum;    
-        // return player1.sum
-        // console.log(player1.sum);
-        // console.log(playerMessage);
+       
         endGame();
     } else {
         document.getElementById('player').innerHTML = player1.sum;
         winLose.innerHTML = 'Do you dare draw another?'
-        // return player1.sum
-        // console.log(player1.sum);
+       
     }
 }
 
@@ -135,48 +141,21 @@ let winLose = document.querySelector('.winLoseMsg')
 
 let message = document.querySelector('.displayMessage');
 
-// let newCard = document.createElement('div');
+// if(player1.sum == 21){
+//    winLose.innerHTML = (`${player1} wins!`);
+//     document.getElementById('dealr').innerHTML = dealer.sum;
+//     endGame();
+// };
 
-// head message 'welcome to the blackjack table, good luck beating the dealer'
-
-// document.getElementById('player').innerHTML = player1.sum;
-
-// document.getElementById('dealr').innerHTML = dealer.sum;
-
-deck1.fillDeck();
-
-deck1.shuffleDeck();
-
-player1.addCardToHand(deck1.dealCard()); 
-
-player1.addCardToHand(deck1.dealCard());
-
-document.getElementById('player').innerHTML = player1.sum;
-
-if(player1.sum == 21){
-   winLose.innerHTML = (`${player1} wins!`);
-    document.getElementById('dealr').innerHTML = dealer.sum;
-    endGame();
-};
-// console.log(player1.sum);
-// console.log(player1.hand);
-dealer.addCardToHand(deck1.dealCard());
-
-dealer.addCardToHand(deck1.dealCard());
-
-if(dealer.sum == 21){
-    winLose.innerHTML = 'Dealer Wins!'
-    document.getElementById('player').innerHTML = player1.sum;
-    document.getElementById('dealr').innerHTML = dealer.sum;
-    endGame();
-    // console.log('Dealer wins!')
-}
-// console.log(dealer.sum);
-// console.log((dealer.hand));
+// if(dealer.sum == 21){
+//     winLose.innerHTML = 'Dealer Wins!'
+//     document.getElementById('player').innerHTML = player1.sum;
+//     document.getElementById('dealr').innerHTML = dealer.sum;
+//     endGame();
+// }
+startGame();
 
 hit.addEventListener('click', () => hitMe());
-// console.log(player1.sum)
-// console.log(player1.hand);
 
 hold.addEventListener('click', () => 
 {
@@ -186,29 +165,24 @@ hold.addEventListener('click', () =>
         drawCard(newCard,'dealerCards')
         dealer.addCardToHand(newCard)
 
-        // document.getElementById('dealerCard').append(newCard);
         document.getElementById('dealr').innerHTML = dealer.sum;
          
-        // console.log(player1.sum); console.log(dealer.sum);
     }
     if (player1.sum == dealer.sum) { 
     winLose.innerHTML = 'Its a tie!'
     document.getElementById('dealr').innerHTML = dealer.sum;
-    // console.log('Its a tie!');
-    // console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
+   
     endGame()
     }
     else if (dealer.sum > player1.sum && dealer.sum <= 21) {
     winLose.innerHTML = 'Dealer Wins!'
     document.getElementById('dealr').innerHTML = dealer.sum;
-    // console.log('Dealer Wins!'); console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
+    
     endGame()
     }
     else {
     winLose.innerHTML = `${player1.name} wins!`
     document.getElementById('dealr').innerHTML = dealer.sum;
-    // console.log(`${player1.name} wins! Dealer bust!`); 
-    // console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
     endGame()
     }
 } 
@@ -235,35 +209,20 @@ playAgain.addEventListener('click', () => {
     document.getElementById('player').innerHTML = player1.sum;
     dealer.sum = 0;
     document.getElementById('dealr').innerHTML = dealer.sum;
-        if (deck1.cards.length < 20){deck1.fillDeck(); deck1.shuffleDeck(); 
-            // console.log(deck1.cards)
-            player1.addCardToHand(deck1.dealCard());
-            player1.addCardToHand(deck1.dealCard());
-                document.getElementById('player').innerHTML = player1.sum;
-            dealer.addCardToHand(deck1.dealCard());
-            dealer.addCardToHand(deck1.dealCard());
-    } else{
-            player1.addCardToHand(deck1.dealCard());
-            player1.addCardToHand(deck1.dealCard());
-                document.getElementById('player').innerHTML = player1.sum;
-            dealer.addCardToHand(deck1.dealCard());
-            dealer.addCardToHand(deck1.dealCard());
-            document.querySelectorAll('#copy').forEach(card => card.remove());
-        }
+    //     if (deck1.cards.length < 20){deck1.fillDeck(); deck1.shuffleDeck(); 
+    //         player1.addCardToHand(deck1.dealCard());
+    //         player1.addCardToHand(deck1.dealCard());
+    //             document.getElementById('player').innerHTML = player1.sum;
+    //         dealer.addCardToHand(deck1.dealCard());
+    //         dealer.addCardToHand(deck1.dealCard());
+    // } else{
+    //         player1.addCardToHand(deck1.dealCard());
+    //         player1.addCardToHand(deck1.dealCard());
+    //             document.getElementById('player').innerHTML = player1.sum;
+    //         dealer.addCardToHand(deck1.dealCard());
+    //         dealer.addCardToHand(deck1.dealCard());
+    //     } 
+        document.querySelectorAll('#copy').forEach(card => card.remove());
+        startGame();
     }
 )
-
-
-
-// let joker = new Card(1, 6);
-// let joker2 = new Card(3, 11
-//     )
-
-
-
-// deck1.shuffleDeck();
-// console.log(deck1.cards);
-// player1.handValue()
-
-// console.log(player1.sum);
-// console.log(player1.hand);
