@@ -1,3 +1,4 @@
+//functions classes and global variables
 class Card{
     constructor(suitId,id){
     this.suitId = suitId;
@@ -99,7 +100,16 @@ function startGame(){
     let myCard4 = deck1.dealCard()
     dealer.addCardToHand(myCard4);
     drawCard(myCard4, 'dealerCards');
-
+    if(player1.sum == 21){
+        winLose.innerHTML = (`${player1} wins!`);
+         document.getElementById('dealr').innerHTML = dealer.sum;
+         endGame();
+     } else if(dealer.sum == 21){
+         winLose.innerHTML = 'Dealer Wins!'
+         document.getElementById('player').innerHTML = player1.sum;
+         document.getElementById('dealr').innerHTML = dealer.sum;
+         endGame();
+     }
 }
 function endGame(){
      toggleHitHold('none');
@@ -125,6 +135,15 @@ function hitMe(){
     }
 }
 
+function toggleHitHold(value){
+    document.getElementById('addCard').style.pointerEvents = value;
+    document.getElementById('pass').style.pointerEvents = value;
+}
+
+function togglePlayAgain(val){
+    document.getElementById('newDeal').style.pointerEvents = val;
+}
+
 const hold = document.querySelector('#pass');
 
 const hit = document.getElementById('addCard'); 
@@ -141,18 +160,7 @@ let winLose = document.querySelector('.winLoseMsg')
 
 let message = document.querySelector('.displayMessage');
 
-// if(player1.sum == 21){
-//    winLose.innerHTML = (`${player1} wins!`);
-//     document.getElementById('dealr').innerHTML = dealer.sum;
-//     endGame();
-// };
-
-// if(dealer.sum == 21){
-//     winLose.innerHTML = 'Dealer Wins!'
-//     document.getElementById('player').innerHTML = player1.sum;
-//     document.getElementById('dealr').innerHTML = dealer.sum;
-//     endGame();
-// }
+//game function below
 startGame();
 
 hit.addEventListener('click', () => hitMe());
@@ -187,16 +195,7 @@ hold.addEventListener('click', () =>
     }
 } 
 );
-
 //this function allows me to pass in '' to enable or none to disable the boxes ability to be clicked
-function toggleHitHold(value){
-    document.getElementById('addCard').style.pointerEvents = value;
-    document.getElementById('pass').style.pointerEvents = value;
-}
-
-function togglePlayAgain(val){
-    document.getElementById('newDeal').style.pointerEvents = val;
-}
 
 playAgain.addEventListener('click', () => {
     toggleHitHold('');
@@ -209,20 +208,8 @@ playAgain.addEventListener('click', () => {
     document.getElementById('player').innerHTML = player1.sum;
     dealer.sum = 0;
     document.getElementById('dealr').innerHTML = dealer.sum;
-    //     if (deck1.cards.length < 20){deck1.fillDeck(); deck1.shuffleDeck(); 
-    //         player1.addCardToHand(deck1.dealCard());
-    //         player1.addCardToHand(deck1.dealCard());
-    //             document.getElementById('player').innerHTML = player1.sum;
-    //         dealer.addCardToHand(deck1.dealCard());
-    //         dealer.addCardToHand(deck1.dealCard());
-    // } else{
-    //         player1.addCardToHand(deck1.dealCard());
-    //         player1.addCardToHand(deck1.dealCard());
-    //             document.getElementById('player').innerHTML = player1.sum;
-    //         dealer.addCardToHand(deck1.dealCard());
-    //         dealer.addCardToHand(deck1.dealCard());
-    //     } 
-        document.querySelectorAll('#copy').forEach(card => card.remove());
-        startGame();
+
+    document.querySelectorAll('#copy').forEach(card => card.remove());
+    startGame();
     }
-)
+);
