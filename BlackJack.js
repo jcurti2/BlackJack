@@ -101,7 +101,7 @@ function startGame(){
     dealer.addCardToHand(myCard4);
     drawCard(myCard4, 'dealerCards');
     if(player1.sum == 21){
-        winLose.innerHTML = (`${player1} wins!`);
+        winLose.innerHTML = (`${player1.name} wins!`);
          document.getElementById('dealr').innerHTML = dealer.sum;
          endGame();
      } else if(dealer.sum == 21){
