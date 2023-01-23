@@ -76,6 +76,15 @@ class Deck{
 
 }
 
+let newCard = deck1.dealCard
+
+function drawCard(myCard, cardHolder){
+    let copy = document.getElementById('cardTemp').cloneNode(true);
+    copy.document.getElementById('cardNum') = myCard.cardValue();
+    copy.document.getElementById('cardSuit') = myCard.suitValue();
+    cardHolder = document.getElementById('cardHolder');
+    cardHolder.append(copy);
+}
 
 
 function endGame(){
@@ -93,12 +102,16 @@ function endGame(){
 function hitMe(){
     player1.addCardToHand(deck1.dealCard())
     if(player1.sum > 21){
-        playerMessage = `${player1.name} bust! Dealer wins!`     
+        winLose.innerHTML = `${player1.name} bust! Dealer wins!`
+        document.getElementById('dealr').innerHTML = dealer.sum; 
+        document.getElementById('player').innerHTML = player1.sum;    
         // return player1.sum
         // console.log(player1.sum);
         // console.log(playerMessage);
         endGame();
     } else {
+        document.getElementById('player').innerHTML = player1.sum;
+        winLose.innerHTML = 'Do you dare draw another?'
         // return player1.sum
         // console.log(player1.sum);
     }
@@ -116,7 +129,17 @@ let dealer = new Player('Dealer', true);
 
 let deck1 = new Deck;
 
+let winLose = document.querySelector('.winLoseMsg')
+
 let message = document.querySelector('.displayMessage');
+
+// let newCard = document.createElement('div');
+
+// head message 'welcome to the blackjack table, good luck beating the dealer'
+
+// document.getElementById('player').innerHTML = player1.sum;
+
+// document.getElementById('dealr').innerHTML = dealer.sum;
 
 deck1.fillDeck();
 
@@ -124,17 +147,28 @@ deck1.shuffleDeck();
 
 player1.addCardToHand(deck1.dealCard());
 
+// newCard.document.getElementById('dealerCard').append(newCard); 
+
 player1.addCardToHand(deck1.dealCard());
+
+document.getElementById('player').innerHTML = player1.sum;
+
 if(player1.sum == 21){
-    console.log(`${player1} wins!`)
+   winLose.innerHTML = (`${player1} wins!`);
+    document.getElementById('dealr').innerHTML = dealer.sum;
+    endGame();
 };
-console.log(player1.sum);
-console.log(player1.hand);
+// console.log(player1.sum);
+// console.log(player1.hand);
 dealer.addCardToHand(deck1.dealCard());
 
 dealer.addCardToHand(deck1.dealCard());
+
 if(dealer.sum == 21){
-    message.innerHTML = 'Dealer Wins!'
+    winLose.innerHTML = 'Dealer Wins!'
+    document.getElementById('player').innerHTML = player1.sum;
+    document.getElementById('dealr').innerHTML = dealer.sum;
+    endGame();
     // console.log('Dealer wins!')
 }
 // console.log(dealer.sum);
@@ -147,23 +181,29 @@ hit.addEventListener('click', () => hitMe());
 hold.addEventListener('click', () => 
 {
 // Dealer's turn 
-    while (player1.sum > dealer.sum){ 
-        dealer.addCardToHand(deck1.dealCard()); 
+    while ( 16 > dealer.sum){ 
+        dealer.addCardToHand(deck1.dealCard())
+        // document.getElementById('dealerCard').append(newCard);
+        document.getElementById('dealr').innerHTML = dealer.sum;
+         
         // console.log(player1.sum); console.log(dealer.sum);
     }
     if (player1.sum == dealer.sum) { 
-    message.innerHTML = 'Its a tie!'
+    winLose.innerHTML = 'Its a tie!'
+    document.getElementById('dealr').innerHTML = dealer.sum;
     // console.log('Its a tie!');
     // console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
     endGame()
     }
     else if (dealer.sum > player1.sum && dealer.sum <= 21) {
-    message.innerHTML = 'Dealer Wins!'
+    winLose.innerHTML = 'Dealer Wins!'
+    document.getElementById('dealr').innerHTML = dealer.sum;
     // console.log('Dealer Wins!'); console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
     endGame()
     }
     else {
-    message.innerHTML = `${player1.name} wins! Dealer bust!`
+    winLose.innerHTML = `${player1.name} wins!`
+    document.getElementById('dealr').innerHTML = dealer.sum;
     // console.log(`${player1.name} wins! Dealer bust!`); 
     // console.log(dealer.sum); console.log(player1.sum);console.log(dealer.hand); console.log(player1.hand);
     endGame()
@@ -176,28 +216,33 @@ function toggleHitHold(value){
     document.getElementById('addCard').style.pointerEvents = value;
     document.getElementById('pass').style.pointerEvents = value;
 }
+
 function togglePlayAgain(val){
     document.getElementById('newDeal').style.pointerEvents = val;
 }
+
 playAgain.addEventListener('click', () => {
     toggleHitHold('');
     togglePlayAgain('none');
     message.innerHTML = `Let's see if ${player1.name} can win this time!`
+    winLose.innerHTML = ''
     player1.hand = [];
     dealer.hand = [];
     player1.sum = 0;
+    document.getElementById('player').innerHTML = player1.sum;
     dealer.sum = 0;
+    document.getElementById('dealr').innerHTML = dealer.sum;
         if (deck1.cards.length < 20){deck1.fillDeck(); deck1.shuffleDeck(); 
             // console.log(deck1.cards)
             player1.addCardToHand(deck1.dealCard());
             player1.addCardToHand(deck1.dealCard());
-    
+                document.getElementById('player').innerHTML = player1.sum;
             dealer.addCardToHand(deck1.dealCard());
             dealer.addCardToHand(deck1.dealCard());
     } else{
             player1.addCardToHand(deck1.dealCard());
             player1.addCardToHand(deck1.dealCard());
-    
+                document.getElementById('player').innerHTML = player1.sum;
             dealer.addCardToHand(deck1.dealCard());
             dealer.addCardToHand(deck1.dealCard());
             // console.log(player1.sum); console.log(dealer.sum); console.log(player1.hand); console.log(dealer.hand);

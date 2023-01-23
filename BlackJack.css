@@ -1,0 +1,14 @@
+.card {
+    display: flex;
+    border: 1px solid black;
+    width: 200px;
+    height: 300px;
+}
+
+
+.buttons{
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    
+}

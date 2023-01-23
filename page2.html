@@ -4,15 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/BlackJack.css">
+    <link rel="stylesheet" href="BlackJack.css">
     
     <title>Document</title>
 </head>
 <body>
+    
+    <div class = 'container' id = 'cardHolder'>
+        <div class = 'card' id = 'cardTemp'>
+            <span class = 'val' id = 'cardNum' ></span>
+            <span class = 'val' id = 'cardSuit'></span>
+        </div> 
+    </div>
+
+        <div class = 'playerCard'></div>
+        <div class = 'playerCard'></div>
+
+        <div class = 'dealerCard' id = '1'></div>
+        <div class = 'dealerCard' id = '2'></div>
+   
     <h2 class = "displayMessage"></h2>
+
+    <h3 class = 'winLoseMsg'></h3>
+
+    <h4 class = 'score' id= 'player'></h4>
+
+    <h4 class = 'score' id = 'dealr'></h4>
+
+    <div class = 'player' id = 'dealer'></div>
+
+    <div class = 'player' id = 'p1'></div>
+
+
+<div class = 'buttons'>
     <button type="button" id="addCard">Hit Me</button>
+
     <button type="button" id="pass">Hold</button>
+
     <button type="button" id="newDeal">Deal Again</button>
+</div>
 <script src="BlackJack.js"></script>
 </body>
 </html>
