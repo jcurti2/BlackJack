@@ -76,14 +76,14 @@ class Deck{
 
 }
 
-let newCard = deck1.dealCard
-
 function drawCard(myCard, cardHolder){
     let copy = document.getElementById('cardTemp').cloneNode(true);
-    copy.document.getElementById('cardNum') = myCard.cardValue();
-    copy.document.getElementById('cardSuit') = myCard.suitValue();
-    cardHolder = document.getElementById('cardHolder');
-    cardHolder.append(copy);
+    copy.querySelector('.cardNum').innerHTML = myCard.cardValue();
+    copy.querySelector('.cardSuit').innerHTML = myCard.suitValue();
+    copy.querySelector('.cardSuit').classList.add(myCard.suitValue());
+    copy.id = 'copy'
+    let whosCard = document.getElementById(cardHolder);
+    whosCard.append(copy);
 }
 
 
@@ -100,7 +100,9 @@ function endGame(){
 
 
 function hitMe(){
-    player1.addCardToHand(deck1.dealCard())
+    let myCard = deck1.dealCard()
+    player1.addCardToHand(myCard)
+    drawCard(myCard,'playerCards')
     if(player1.sum > 21){
         winLose.innerHTML = `${player1.name} bust! Dealer wins!`
         document.getElementById('dealr').innerHTML = dealer.sum; 
@@ -145,9 +147,7 @@ deck1.fillDeck();
 
 deck1.shuffleDeck();
 
-player1.addCardToHand(deck1.dealCard());
-
-// newCard.document.getElementById('dealerCard').append(newCard); 
+player1.addCardToHand(deck1.dealCard()); 
 
 player1.addCardToHand(deck1.dealCard());
 
@@ -181,8 +181,11 @@ hit.addEventListener('click', () => hitMe());
 hold.addEventListener('click', () => 
 {
 // Dealer's turn 
-    while ( 16 > dealer.sum){ 
-        dealer.addCardToHand(deck1.dealCard())
+    while ( dealer.sum < 16){ 
+        let newCard = deck1.dealCard()
+        drawCard(newCard,'dealerCards')
+        dealer.addCardToHand(newCard)
+
         // document.getElementById('dealerCard').append(newCard);
         document.getElementById('dealr').innerHTML = dealer.sum;
          
@@ -245,7 +248,7 @@ playAgain.addEventListener('click', () => {
                 document.getElementById('player').innerHTML = player1.sum;
             dealer.addCardToHand(deck1.dealCard());
             dealer.addCardToHand(deck1.dealCard());
-            // console.log(player1.sum); console.log(dealer.sum); console.log(player1.hand); console.log(dealer.hand);
+            document.querySelectorAll('#copy').forEach(card => card.remove());
         }
     }
 )
