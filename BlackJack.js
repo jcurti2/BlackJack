@@ -75,11 +75,16 @@ class Deck{
 
 }
 
-function drawCard(myCard, cardHolder){
+function drawCard(myCard, cardHolder,dealerFirstCard){
     let copy = document.getElementById('cardTemp').cloneNode(true);
+    if(dealerFirstCard != undefined && dealerFirstCard){
+        copy.querySelector('.cardSuit').classList.add('dealerFirstCard');
+        copy.querySelector('.cardNum').classList.add('dealerFirstCard');
+    }
     copy.querySelector('.cardNum').innerHTML = myCard.cardValue();
     copy.querySelector('.cardSuit').innerHTML = myCard.suitValue();
     copy.querySelector('.cardSuit').classList.add(myCard.suitValue());
+
     copy.id = 'copy'
     let whosCard = document.getElementById(cardHolder);
     whosCard.append(copy);
@@ -95,8 +100,8 @@ function startGame(){
     drawCard(myCard2, 'playerCards');
     document.getElementById('player').innerHTML = player1.sum;
     let myCard3 = deck1.dealCard()
-    dealer.addCardToHand(myCard3);
-    drawCard(myCard3, 'dealerCards');
+    dealer.addCardToHand(myCard3)
+    drawCard(myCard3, 'dealerCards', true);
     let myCard4 = deck1.dealCard()
     dealer.addCardToHand(myCard4);
     drawCard(myCard4, 'dealerCards');
@@ -115,8 +120,11 @@ function endGame(){
      toggleHitHold('none');
      togglePlayAgain('');
      message.innerHTML = 'Play again?';
-     
+     document.querySelectorAll('.dealerFirstCard').forEach(card => card.classList.remove('dealerFirstCard'))
 }
+     
+     
+
 
 function hitMe(){
     let myCard = deck1.dealCard()
@@ -130,7 +138,7 @@ function hitMe(){
         endGame();
     } else {
         document.getElementById('player').innerHTML = player1.sum;
-        winLose.innerHTML = 'Do you dare draw another?'
+        winLose.innerHTML = 'Draw another?'
        
     }
 }

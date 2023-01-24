@@ -5,20 +5,31 @@
     height: 150px;
     
 }
-#playerCards{
-
+.dealerFirstCard{
+    display: none;
 }
+/* #cardNum:nth-of-type(1n+0){
+    color:red;
+} */
+/* #cardTemp{
+    position:relative;
+    width:100px;
+    height:150px;
+    border: 1px solid black;
+
+} */
+
 .cards{
     display: flex;
     margin:25px;
     padding:10px;
-
 }
+
 
 .container{
     display: flex;
     justify-content: space-around;
-    margin: 5px;
+    margin-inline-start: 10%;
 
 }
 
@@ -28,6 +39,7 @@
     display: flex;
     justify-content: space-evenly;
     height: 50px;
+
     
 }
 
