@@ -1,8 +1,25 @@
 #copy {
     display: flex;
     border: 1px solid black;
-    width: 200px;
-    height: 300px;
+    width: 100px;
+    height: 150px;
+    
+}
+#playerCards{
+
+}
+.cards{
+    display: flex;
+    margin:25px;
+    padding:10px;
+
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    margin: 5px;
+
 }
 
 
@@ -10,5 +27,23 @@
     position: relative;
     display: flex;
     justify-content: space-evenly;
+    height: 50px;
     
+}
+
+.displayMessage{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.winLoseMsg{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.score{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline-start: 30%;
 }
