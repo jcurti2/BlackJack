@@ -74,6 +74,21 @@ class Deck{
     }
 
 }
+const hold = document.querySelector('#pass');
+
+const hit = document.getElementById('addCard'); 
+
+const playAgain = document.querySelector('#newDeal');
+
+let player1 = new Player('player1' , false);
+
+let dealer = new Player('Dealer', true);
+
+let deck1 = new Deck;
+
+let winLose = document.querySelector('.winLoseMsg')
+
+let message = document.querySelector('.displayMessage');
 
 function drawCard(myCard, cardHolder,dealerFirstCard){
     let copy = document.getElementById('cardTemp').cloneNode(true);
@@ -92,6 +107,8 @@ function drawCard(myCard, cardHolder,dealerFirstCard){
 function startGame(){
     deck1.fillDeck();
     deck1.shuffleDeck();
+    document.getElementById('p1').innerHTML = `${player1.name}`
+    document.getElementById('dealer').innerHTML = 'Dealer'
     let myCard1 = deck1.dealCard()
     player1.addCardToHand(myCard1);
     drawCard(myCard1, 'playerCards');
@@ -151,22 +168,6 @@ function toggleHitHold(value){
 function togglePlayAgain(val){
     document.getElementById('newDeal').style.pointerEvents = val;
 }
-
-const hold = document.querySelector('#pass');
-
-const hit = document.getElementById('addCard'); 
-
-const playAgain = document.querySelector('#newDeal');
-
-let player1 = new Player('Player1', false);
-
-let dealer = new Player('Dealer', true);
-
-let deck1 = new Deck;
-
-let winLose = document.querySelector('.winLoseMsg')
-
-let message = document.querySelector('.displayMessage');
 
 //game function below
 startGame();
