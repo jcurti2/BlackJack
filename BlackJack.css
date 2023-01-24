@@ -1,6 +1,12 @@
 body{
     background-color: seashell;
 }
+header{
+    font-size: 50px;
+    margin-top:20px;
+    margin-bottom: 50px;
+    text-align: center; 
+}
 #copy {
     display: flex;
     border: 1px solid black;
@@ -12,6 +18,8 @@ body{
     display: none;
 }
 #playerTitles{
+    font-size: 30px;
+    font-weight: 900;
     display:flex;
     justify-content: space-evenly;
     flex-direction: row-reverse;
@@ -22,7 +30,9 @@ body{
     display: flex;
     margin:25px;
     padding:10px;
+    flex-wrap: wrap;
 }
+
 
 
 .container{
@@ -37,24 +47,55 @@ body{
     position: relative;
     display: flex;
     justify-content: space-evenly;
-    height: 50px;
+    /* height: 50px; */
+    /* width: 200px;
+    font-size: 20px; */
 
     
 }
+
+/* buttons */
+#addCard{
+    font-size: 30px;
+}
+#pass{
+    font-size: 30px;
+}
+#newDeal{
+    font-size: 30px;
+}
+
+
 
 .displayMessage{
     display:flex;
     align-items: center;
     justify-content: center;
+    margin-top: 75px;
+    color: rebeccapurple;
 }
 .winLoseMsg{
     display:flex;
     align-items: center;
     justify-content: center;
+    margin-top: 75px;
+    font-size: 40px;
 }
 .score{
     display: inline-flex;
     justify-content: center;
     align-items: center;
     margin-inline-start: 30%;
+}
+.Diamonds{
+    
+}
+.Clubs{
+
+}
+.Spades{
+
+}
+.Hearts{
+    
 }

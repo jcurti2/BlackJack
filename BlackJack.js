@@ -3,7 +3,7 @@ class Card {
     constructor(suitId, id) {
 
         this.suitId = suitId;
-        
+
         this.id = id;
     }
     cardValue() {
@@ -127,6 +127,7 @@ let winLose = document.querySelector('.winLoseMsg')
 
 let message = document.querySelector('.displayMessage');
 
+
 function drawCard(myCard, cardHolder, dealerFirstCard) {
 
     let copy = document.getElementById('cardTemp').cloneNode(true);
@@ -140,7 +141,7 @@ function drawCard(myCard, cardHolder, dealerFirstCard) {
 
     copy.querySelector('.cardNum').innerHTML = myCard.cardValue();
 
-    copy.querySelector('.cardSuit').innerHTML = myCard.suitValue();
+    // copy.querySelector('.cardSuit').innerHTML = myCard.suitValue();
 
     copy.querySelector('.cardSuit').classList.add(myCard.suitValue());
 
