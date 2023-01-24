@@ -1,5 +1,5 @@
 body{
-    background-color: seashell;
+    background-color: rgb(27, 234, 234);
 }
 header{
     font-size: 50px;
@@ -73,6 +73,7 @@ header{
     justify-content: center;
     margin-top: 75px;
     color: rebeccapurple;
+    font-size: 50px;
 }
 .winLoseMsg{
     display:flex;
