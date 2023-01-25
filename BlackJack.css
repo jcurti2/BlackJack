@@ -1,7 +1,8 @@
 body{
-    background-color: rgb(27, 234, 234);
+    background-color: rgb(28, 88, 7);
 }
 header{
+    color: aliceblue;
     font-size: 50px;
     margin-top:30px;
     margin-bottom: 30px;
@@ -27,11 +28,11 @@ header{
 }
 
 .cards{
-   
     display: flex;
     margin:25px;
     padding:10px;
     flex-wrap: wrap;
+    margin-bottom: 0px;
 }
 
 
@@ -60,7 +61,6 @@ header{
     color: rebeccapurple;
 }
 .card{
-
     flex-direction: column;
     background: white;
     border-radius: 5px;
@@ -86,24 +86,31 @@ header{
     display:flex;
     align-items: center;
     justify-content: center;
-    margin-top: 75px;
-    color: rebeccapurple;
+    margin-top: 50px;
+    color: aliceblue;
     font-size: 50px;
+    margin-bottom: 10px;
 }
 .winLoseMsg{
+    color:rgb(195, 40, 203);
     display:flex;
     align-items: center;
     justify-content: center;
-    margin-top: 75px;
+    margin-top: 40px;
     font-size: 40px;
     transition: opacity 3s ease;
     
 }
+.player{
+    color:white;
+}
 .score{
+    
     display: inline-flex;
     justify-content: center;
     align-items: center;
     margin-inline-start: 30%;
+    color: salmon;
 }
 .Diamonds:before{
     content: '♦';
@@ -123,6 +130,9 @@ header{
 }
 .cardNum{
     margin-left: 4px;
+}
+#blankCard{
+    margin:0;
 }
 
 @keyframes fadeIn {
@@ -157,4 +167,3 @@ header{
         opacity: 1;
     }
 }
-  /* https://medium.com/cloud-native-the-gathering/how-to-use-css-to-fade-in-and-fade-out-html-text-and-pictures-f45c11364f08 */

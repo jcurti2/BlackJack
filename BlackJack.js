@@ -119,7 +119,7 @@ const hit = document.getElementById('addCard');
 
 const playAgain = document.querySelector('#newDeal');
 
-let player1 = new Player('player1', false);
+let player1 = new Player(localStorage.getItem('player1'), false);
 
 let dealer = new Player('Dealer', true);
 
@@ -208,6 +208,7 @@ function startGame() {
         endGame();
     }
 }
+
 function endGame() {
 
     toggleHitHold('none');
@@ -312,7 +313,7 @@ playAgain.addEventListener('click', () => {
 
     togglePlayAgain('none');
 
-    message.innerHTML = `Let's see if ${player1.name} can win this time!`
+    message.innerHTML = `Good luck ${player1.name}!`
 
     winLose.innerHTML = ''
 
