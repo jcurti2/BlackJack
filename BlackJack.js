@@ -143,8 +143,6 @@ function drawCard(myCard, cardHolder, dealerFirstCard) {
 
     copy.querySelector('.cardNum').innerHTML = myCard.cardValue();
 
-    // copy.querySelector('.cardSuit').innerHTML = myCard.suitValue();
-
     copy.querySelector('.cardSuit').classList.add(myCard.suitValue());
 
     copy.id = 'copy'
@@ -219,9 +217,6 @@ function endGame() {
 
     document.querySelectorAll('.dealerFirstCard').forEach(card => card.classList.remove('dealerFirstCard'))
 }
-
-
-
 
 function hitMe() {
 
@@ -305,7 +300,6 @@ hold.addEventListener('click', () => {
         endGame()
     }
 });
-//this function allows me to pass in '' to enable or none to disable the boxes ability to be clicked
 
 playAgain.addEventListener('click', () => {
     

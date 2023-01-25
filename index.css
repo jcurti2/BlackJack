@@ -15,7 +15,7 @@ h1{
     position:relative;
     display: flex;
     justify-content: center;
-    margin-top: 200px;
+    margin-top: 50px;
     height: 5vh;
 }
 #start{
@@ -26,4 +26,15 @@ h1{
     border: 2px solid rebeccapurple;
     color: rebeccapurple;
     position: relative;
+}
+.textBox{
+    margin-top:100px;
+    display: flex;
+    justify-content: center;
+}
+.nameTextBox{
+    font-size: 25px;
+    height:40px;
+    border: 5px rebeccapurple;
+    border-radius: 10px;
 }
