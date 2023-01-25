@@ -48,22 +48,16 @@ header{
     position: relative;
     display: flex;
     justify-content: space-evenly;
-    /* height: 50px; */
-    /* width: 200px;
-    font-size: 20px; */
-
-    
 }
 
-/* buttons */
-#addCard{
-    font-size: 30px;
-}
-#pass{
-    font-size: 30px;
-}
-#newDeal{
-    font-size: 30px;
+
+.button{
+    font-weight: 600;
+    font-size:24px;
+    background-color: seashell;
+    border-radius: 8px;
+    border: 2px solid rebeccapurple;
+    color: rebeccapurple;
 }
 .card{
 
@@ -73,6 +67,9 @@ header{
     font-size: 25px;
     margin: 5px;
     animation: fadeIn 4s;
+}
+#cardTemp{
+    display:none;
 }
 
 .card:has(.dealerFirstCard){
@@ -110,16 +107,24 @@ header{
 }
 .Diamonds:before{
     content: '♦';
+    margin-left: 2px;
 }
 .Clubs:before{
     content:'♣';
+    margin-left: 2px;
 }
 .Spades:before{
     content: '♠';
+    margin-left: 2px;
 }
 .Hearts:before{
     content: '♥';
+    margin-left: 2px;
 }
+.cardNum{
+    margin-left: 4px;
+}
+
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
