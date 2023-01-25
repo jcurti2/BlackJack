@@ -111,6 +111,8 @@ class Deck {
     }
 
 }
+const timer = 5000;
+
 const hold = document.querySelector('#pass');
 
 const hit = document.getElementById('addCard');
@@ -179,7 +181,7 @@ function startGame() {
 
     dealer.addCardToHand(myCard3)
 
-    drawCard(myCard3, 'dealerCards', true);
+   drawCard(myCard3, 'dealerCards', true);
 
     let myCard4 = deck1.dealCard()
 
@@ -270,7 +272,7 @@ hold.addEventListener('click', () => {
 
         let newCard = deck1.dealCard()
 
-        drawCard(newCard, 'dealerCards')
+        drawCard(newCard, 'dealerCards');
 
         dealer.addCardToHand(newCard)
 

@@ -3,8 +3,8 @@ body{
 }
 header{
     font-size: 50px;
-    margin-top:20px;
-    margin-bottom: 50px;
+    margin-top:30px;
+    margin-bottom: 30px;
     text-align: center; 
 }
 #copy {
@@ -27,6 +27,7 @@ header{
 }
 
 .cards{
+   
     display: flex;
     margin:25px;
     padding:10px;
@@ -64,8 +65,25 @@ header{
 #newDeal{
     font-size: 30px;
 }
+.card{
 
+    flex-direction: column;
+    background: white;
+    border-radius: 5px;
+    font-size: 25px;
+    margin: 5px;
+    animation: fadeIn 4s;
+}
 
+.card:has(.dealerFirstCard){
+    background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red);
+}
+.card:has(.Hearts){
+    color: red;
+}
+.card:has(.Diamonds){
+    color: red;
+}
 
 .displayMessage{
     display:flex;
@@ -81,6 +99,8 @@ header{
     justify-content: center;
     margin-top: 75px;
     font-size: 40px;
+    transition: opacity 3s ease;
+    
 }
 .score{
     display: inline-flex;
@@ -88,15 +108,48 @@ header{
     align-items: center;
     margin-inline-start: 30%;
 }
-.Diamonds{
-    
+.Diamonds:before{
+    content: '♦';
 }
-.Clubs{
-
+.Clubs:before{
+    content:'♣';
 }
-.Spades{
-
+.Spades:before{
+    content: '♠';
 }
-.Hearts{
-    
+.Hearts:before{
+    content: '♥';
 }
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes fadeInText {
+    from { opacity: 0; }
+   to { opacity: 1; }
+  }
+  @-moz-keyframes fadeinText { 
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadeinText { 
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadeinText {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+  /* https://medium.com/cloud-native-the-gathering/how-to-use-css-to-fade-in-and-fade-out-html-text-and-pictures-f45c11364f08 */
