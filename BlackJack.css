@@ -140,6 +140,10 @@ header{
     margin:0;
 }
 
+#dealer{
+    margin-inline-start: 25%;
+}
+
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }

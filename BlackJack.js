@@ -60,6 +60,8 @@ class Player {
         this.sum = 0;
 
         this.dealer = dealer
+
+        this.wins = 0;
     }
 
     addCardToHand(card) {
@@ -159,7 +161,11 @@ function startGame() {
 
     document.getElementById('p1').innerHTML = `${player1.name}`
 
+    document.getElementById('playerWins').innerHTML = 'Wins: ' + player1.wins;
+
     document.getElementById('dealer').innerHTML = 'Dealer'
+
+    document.getElementById('dealerWins').innerHTML = 'Wins: ' + dealer.wins;
 
     let myCard1 = deck1.dealCard()
 
@@ -193,6 +199,10 @@ function startGame() {
 
         document.getElementById('dealr').innerHTML = dealer.sum;
 
+        player1.wins += 1;
+
+        document.getElementById('playerWins').innerHTML = 'Wins: ' +  player1.wins;
+
         endGame();
 
     } else if (dealer.sum == 21) {
@@ -202,6 +212,10 @@ function startGame() {
         document.getElementById('player').innerHTML = player1.sum;
 
         document.getElementById('dealr').innerHTML = dealer.sum;
+
+        dealer.wins += 1;
+
+        document.getElementById('dealerWins').innerHTML = 'Wins: ' + dealer.wins;
 
         endGame();
     }
@@ -233,6 +247,10 @@ function hitMe() {
         document.getElementById('dealr').innerHTML = dealer.sum;
         
         document.getElementById('player').innerHTML = player1.sum;
+
+        dealer.wins += 1;
+
+        document.getElementById('dealerWins').innerHTML = 'Wins: ' + dealer.wins;
 
         endGame();
     } else {
@@ -291,6 +309,10 @@ hold.addEventListener('click', () => {
 
         document.getElementById('dealr').innerHTML = dealer.sum;
 
+        dealer.wins += 1;
+
+        document.getElementById('dealerWins').innerHTML = 'Wins: ' + dealer.wins;
+
         endGame()
     }
     else {
@@ -298,6 +320,12 @@ hold.addEventListener('click', () => {
         winLose.innerHTML = `${player1.name} wins!`
 
         document.getElementById('dealr').innerHTML = dealer.sum;
+
+        document.getElementById('playerWins').innerHTML = player1.wins;
+
+        player1.wins += 1;
+
+        document.getElementById('playerWins').innerHTML = 'Wins: ' + player1.wins;
 
         endGame()
     }
