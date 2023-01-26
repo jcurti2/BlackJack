@@ -1,3 +1,7 @@
+
+.font{
+    font-family: 'Shadows Into Light', cursive;}
+
 body{
     background-color: rgb(28, 88, 7);
 }
@@ -19,12 +23,12 @@ header{
     display: none;
 }
 #playerTitles{
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 900;
     display:flex;
     justify-content: space-evenly;
     flex-direction: row-reverse;
-    margin: 25px;
+    margin: 20px;
 }
 
 .cards{
@@ -50,7 +54,6 @@ header{
     display: flex;
     justify-content: space-evenly;
 }
-
 
 .button{
     font-weight: 600;
@@ -86,7 +89,7 @@ header{
     display:flex;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 15px;
     color: aliceblue;
     font-size: 50px;
     margin-bottom: 10px;
@@ -96,7 +99,8 @@ header{
     display:flex;
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 40px;
     transition: opacity 3s ease;
     
@@ -105,7 +109,8 @@ header{
     color:white;
 }
 .score{
-    
+    margin:0;
+    font-size: 40px;
     display: inline-flex;
     justify-content: center;
     align-items: center;

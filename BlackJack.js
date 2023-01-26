@@ -258,6 +258,8 @@ function togglePlayAgain(val) {
 }
 
 //game function below
+winLose.innerHTML = `Good luck ${player1.name}!`
+
 startGame();
 
 hit.addEventListener('click', () => hitMe());
