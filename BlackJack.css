@@ -114,7 +114,7 @@ header{
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    margin-inline-start: 30%;
+    margin-inline-start: 32%;
     color: salmon;
 }
 .Diamonds:before{
@@ -141,9 +141,17 @@ header{
 }
 
 #dealer{
-    margin-inline-start: 25%;
+    margin-inline-start: -5%;
 }
-
+#dealerWins{
+    margin-inline-start: -15%;
+}
+#playerWins{
+    margin-inline-start: -15%;
+}
+#p1{
+    margin-inline-start: 0%;
+}
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
