@@ -1,7 +1,6 @@
 body {
     background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red);
     min-height: 77.5vh;
-    /* overflow: hidden; */
 }
 
 h1{

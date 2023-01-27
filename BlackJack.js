@@ -113,7 +113,6 @@ class Deck {
     }
 
 }
-const timer = 5000;
 
 const hold = document.querySelector('#pass');
 
