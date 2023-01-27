@@ -7,6 +7,7 @@
 ### ***Description***
 #### BlackJack allows you to play the classic card game between you and a dealer. 
 Find my game here: black-jack-whole-snails.surge.sh
+Trello Board: https://trello.com/b/D3tCiav8/project-1
 ***
 ### ***Techonologies Used***
 * Javascript
